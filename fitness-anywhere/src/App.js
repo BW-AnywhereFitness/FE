@@ -1,16 +1,17 @@
 import React from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, NavLink } from 'react-router-dom'
 import Form from './Component/form'
 
 function App() {
   return (
+    
     <div className="App">
-      Hello World!
+      <div class="bg"></div>
       <nav>
-      <Link to="/">
+      <NavLink to="/">
       Home
-      </Link>
+      </NavLink>
       <Link to="/login">
       Login
       </Link>
@@ -22,11 +23,12 @@ function App() {
       </Link>
       <Link to="/clientschedule">
       Client Schedule
-      </Link>
+      </Link> 
+      </nav>
       <Route exact path ='/signup'>
         <Form></Form>
       </Route>
-      </nav>
+     
     </div>
   );
 }
