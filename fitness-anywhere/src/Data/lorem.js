@@ -1,4 +1,4 @@
-const data = [{
+export const data = [{
 
   name:"Power Yoga",
   type:"yoga",
@@ -6,8 +6,8 @@ const data = [{
   duration:"45 minutes",
   intensityLevel:"intermediate",
   location:"Lincoln Park",
-  noRegisteredAttendees:"15",
-  maxClassSize:"30"
+  attendees:"15",
+  size:"30"
 
 }, {
 
@@ -17,8 +17,8 @@ const data = [{
   duration:"50 minutes",
   intensityLevel:"beginner",
   location:"Lifetime Fitness",
-  noRegisteredAttendees:"15",
-  maxClassSize:"20"
+  attendees:"15",
+  size:"20"
 
 },
 {
@@ -28,6 +28,6 @@ const data = [{
   duration:"45 minutes",
   intensityLevel:"intermediate",
   location:"Crossfit Center",
-  noRegisteredAttendees:"15",
-  maxClassSize:"20"
+  attendees:"15",
+  size:"20"
 }]

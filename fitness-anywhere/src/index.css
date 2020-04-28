@@ -28,3 +28,14 @@ code {
   color:rgb(255, 255, 255);
   font-size:1rem;
 }
+
+
+.card{
+  background-color:white;
+  margin:10px;
+  color:black;
+  max-width: 40%;
+  margin:10px, auto;
+  text-align:center;
+  display:grid;
+}
