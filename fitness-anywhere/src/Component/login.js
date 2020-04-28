@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
+import { Route, Link, NavLink } from 'react-router-dom'
 
 
 export const Login = () =>
 {
-  const [creds, setCreds] = React.useState({})
+  const [creds, setCreds] = React.useState({ name: "", password: "" })
 
-const handleClick = (e) =>{
-  e.preventDefault()
-}
+  const handleClick = (e) =>
+  {
+    e.preventDefault()
+  }
 
-const onChange = () =>{
-
-}
+  const onChange = (e) =>
+  {
+    setCreds({ ...creds, [e.target.name]: e.target.value })
+  }
 
   return (
-    <div className="component-parent">
-      <br/>
+    <div className="component-parent login">
+      <br />
       Hello. Please log in to access your current information.
-      <br/>
-      <br/>
+      <br />
+      <br />
       <form action="">
-      <input type="text" label="name" name="name" placeholder="username or email"/>
-      <input type="password" label="password" name="password" placeholder="Enter your password"/>
-      <br/>
-      <button onClick={handleClick}>Enter</button>
-      
+        <input onChange={onChange} type="text" label="name" name="name" placeholder="username or email" value={creds.name} />
+        <input onChange={onChange} type="password" label="password" name="password" placeholder="Enter your password" value={creds.password} />
+        <br />
+        <button onClick={handleClick}>Enter</button>
+        <br />
+        <Link to="/forgotpassword">Oops I forgot my password</Link>
+
       </form>
     </div>
-    )
+  )
 }

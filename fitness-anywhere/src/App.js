@@ -4,6 +4,7 @@ import { Route, Link, NavLink } from 'react-router-dom'
 import Form from './Component/form'
 import {Searchbar} from './Component/Searchbar'
 import {Login} from './Component/login'
+import {MySchedule} from './Component/mySchedule'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       </Link>
       <Link to="/myschedule">
       My Schedule
+      {MySchedule}
       </Link>
       <Link to="/clientschedule">
       Client Schedule
@@ -36,7 +38,9 @@ function App() {
       <Route exact path ='/login'>
         <Login></Login>
       </Route>
-     
+      <Route exact path='/myschedule'>
+      {MySchedule}
+      </Route>
     </div>
   );
 }
