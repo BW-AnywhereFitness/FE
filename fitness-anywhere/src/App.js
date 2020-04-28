@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Link, NavLink } from 'react-router-dom'
 import Form from './Component/form'
 import {Searchbar} from './Component/Searchbar'
+import {Login} from './Component/login'
 
 function App() {
   return (
@@ -26,8 +27,14 @@ function App() {
       Client Schedule
       </Link> 
       </nav>
+
+      <Searchbar></Searchbar>
+
       <Route exact path ='/signup'>
         <Form></Form>
+      </Route>
+      <Route exact path ='/login'>
+        <Login></Login>
       </Route>
      
     </div>
