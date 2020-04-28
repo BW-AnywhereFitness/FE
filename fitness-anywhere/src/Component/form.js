@@ -4,7 +4,13 @@ import '../App.css'
 //import axios from 'axios';
 
 function Form(props) {
-    const { onSubmit } = props;
+
+
+const onSubmit=(e)=>{
+e.preventDefault()
+alert('You signed up!')
+console.log("values", values)
+}
 
     const formValues = {
         name: "",
@@ -26,7 +32,7 @@ function Form(props) {
             [event.target.name]: event.target.value
         })
         //console.log("event target name", [event.target.name], event.target.value)
-        console.log("values", values)
+
     }
     return (
         <form>
