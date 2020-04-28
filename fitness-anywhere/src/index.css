@@ -5,8 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
-  color: white
+  background-color: black;
+  color: white;
+  background-image: url("./img/bg.jpg");
+  height: 100%; 
+  background-size: cover;
+  filter: grayscale(100%);
+
+}
+
+img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 code {

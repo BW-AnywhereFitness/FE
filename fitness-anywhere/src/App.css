@@ -24,6 +24,8 @@
   color: white;
 }
 
+
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +37,53 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.formCard{
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 50%;
+
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+input {
+  width: 200px;
+  margin: 5px;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.field {
+  width: 100%;
+  height: 56px;
+  border-radius: 4px;
+  position: relative;
+  background-color: darkred;
+  transition: 0.3s all;
+  display: flex;
+  
+}
+
+link{
+  text-decoration: none;
+}
+
+nav{
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  color: white;
+  background: lightgray;
+}
+
+nav a{
+  text-decoration: none;
+  margin: 10px;
 }
