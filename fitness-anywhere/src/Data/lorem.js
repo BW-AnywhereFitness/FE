@@ -22,7 +22,6 @@ const data = [{
 
 },
 {
-
   name="CrossFit",
   type="general",
   startTime="4:00am",
@@ -31,9 +30,4 @@ const data = [{
   location="Crossfit Center",
   noRegisteredAttendees="15",
   maxClassSize="20"
-
-}
-
-
-
-]
+}]
