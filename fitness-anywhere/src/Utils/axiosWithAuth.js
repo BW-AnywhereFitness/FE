@@ -3,7 +3,7 @@ import axios from "axios";
 export const axiosWithAuth = () =>{
   const tolkien = localStorage.getItem("token")
   return axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://bw-anywhere-fitness-api.herokuapp.com",
     headers:{
       Authorization: tolkien
     }

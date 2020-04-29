@@ -29,6 +29,7 @@ export const Login = () =>
         <input onChange={onChange} type="password" label="password" name="password" placeholder="Enter your password" value={creds.password} />
         <br />
         <button onClick={handleClick}>Enter</button>
+        <Link to="/newuser">New User? Register here</Link>
         <br />
         <Link to="/forgotpassword">Oops I forgot my password</Link>
 

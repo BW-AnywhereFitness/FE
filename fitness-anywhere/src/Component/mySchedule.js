@@ -15,7 +15,7 @@ export const MySchedule = () =>
         <div class="item">{item.duration}</div>
         <div class="item">{item.intensityLevel}</div>
         <div class="item">{item.location}</div>
-        <div class="item">{item.attendees}</div>
+        <div class="item">Attendees: {item.attendees}</div>
         <div class="item">{item.size}</div>
 
       </div>
