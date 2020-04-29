@@ -4,7 +4,7 @@ import { data } from '../Data/lorem'
 
 
 
-export const Searchbar = () =>
+export const Searchbar = (props) =>
 {
 
   const [searchTerm, setSearchTerm] = React.useState("")
@@ -22,8 +22,9 @@ export const Searchbar = () =>
 
   React.useEffect(() =>
   {
-    const results = data.filter(item=>
-      item.name.toLowerCase().includes(searchTerm) // these are not functions 
+    console.log(props.classes)
+    const results = props.classes.filter(item=> // no longer data
+      item.name.toLowerCase().includes(searchTerm)  
     )
     setSearchResults(results)
 }, [searchTerm])

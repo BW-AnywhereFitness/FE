@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
-import { data } from '../Data/lorem'
+import {Searchbar} from '../Component/Searchbar'
 
 export const Classes = () =>
 {
@@ -41,6 +41,7 @@ export const Classes = () =>
   
   // console.log("data", data)
   return (<div>
+    <Searchbar classes={classes}></Searchbar>
     {classes.map(item => (
       <div key={item.id} className='card'>
         <div className="item">Class Id: {item.id}</div>

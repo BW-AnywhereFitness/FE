@@ -49,7 +49,7 @@ function App()
       </Link>
       </nav>
 
-      <Searchbar></Searchbar>
+      {/* <Searchbar></Searchbar> */}
       <Switch>
 
 
