@@ -16,12 +16,20 @@ export const NewUser = () =>
     if (creds.instructor === false)
     {
       axiosWithAuth()
-        .post('/api/auth/client_register')
+        .post('/api/auth/client_register', credObj)
+        .then(res=>{
+          console.log(res)
+
+        })
+        .catch("Error")
 
     }
     else{
       axiosWithAuth()
-      .post('/api/auth/instructor_register')
+      .post('/api/auth/instructor_register', credObj)
+      .then(res=>{
+        console.log(res)
+      })
     }
   }
 
