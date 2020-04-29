@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import '../App.css'
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 //import * as yup from 'yup';
 //import axios from 'axios';
 
-function Form(props) {
-    const { onSubmit } = props;
+function Form() {
+
 
 
     const formValues = {
+        id:0,
+        instructor_id: 0,
         name: "",
-        email: "",
         type: "",
-        startTime: "",
+        start_time: "",
         duration: "",
-        level: "",
+        intensity: "",
         location:"",
-        // noRegAttend:"",
-        size:"",
+        register_attendees:"",
+        max_size:"",
     }
 
     const [values, setValues] = useState(formValues)
@@ -27,12 +29,35 @@ function Form(props) {
             [event.target.name]: event.target.value
         })
         //console.log("event target name", [event.target.name], event.target.value)
-        console.log("values", values)
+        // console.log("values", values)
     }
+
+const onSubmit = (e) =>{
+    e.preventDefault()
+    console.log(values)
+    axiosWithAuth()
+    .post(`/api/class/${values.id}/`, values)
+    .then(res=>{
+        console.log("response from add", res)
+    })
+    .catch("You caught me")
+
+
+}
+
+
     return (
         <form>
             <h2>Anywhere Fitness</h2>
 
+            <label>
+                Class Id:&nbsp;
+                <input
+                    name='id'
+                    value={values.id}
+                    onChange={onInputChange}
+                />
+            </label>
             <label>
                 Name:&nbsp;
                 <input
@@ -43,10 +68,10 @@ function Form(props) {
             </label>
 
             <label>
-                Email:&nbsp;
+                Instructor ID:&nbsp;
                 <input
-                    name='email'
-                    value={values.email}
+                    name='instructor_id'
+                    value={values.instructor_id}
                     onChange={onInputChange}
                 />
             </label>
@@ -71,7 +96,7 @@ function Form(props) {
                 Start Time:&nbsp;
                 <select
                     name='startTime'
-                    value={values.startTime}
+                    value={values.start_time}
                     onChange={onInputChange}
                 >
                     <option>Select a Time</option>
@@ -99,7 +124,7 @@ function Form(props) {
                 Intensity Level:&nbsp;
                 <select
                     name='level'
-                    value={values.level}
+                    value={values.intensity}
                     onChange={onInputChange}
                 >
                     <option>Select Intensity</option>

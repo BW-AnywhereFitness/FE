@@ -17,6 +17,13 @@ export const Classes = () =>
     .catch("not getting properly")
   },[])
 
+const deleteMe = (e) =>{
+  e.preventDefault()
+}
+const edit = (e) =>{
+  e.preventDefault()
+  console.log(e)
+}
 
   // console.log("data", data)
   return (<div>
@@ -32,10 +39,12 @@ export const Classes = () =>
         <div class="item">Location: {item.location}</div>
         <div class="item">Attendees: {item.registered_attendees}</div>
         <div class="item">Max Size: {item.max_size}</div>
+        <button onClick={deleteMe} id={item.id}> Delete</button>
+        <button onClick={edit} id={item.id}>Edit</button>
       </div>
 
     ))}
-        Where classes will go from API
+        Loading
 
   </div>
   )

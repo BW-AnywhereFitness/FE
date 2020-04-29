@@ -17,6 +17,8 @@ export const InstructorLogin = () =>
       .then(res =>
       {
         console.log(res)
+        localStorage.setItem("token",res.data.token)
+
       })
   }
   const onChange = (e) =>
