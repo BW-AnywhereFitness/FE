@@ -1,66 +1,151 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css'
-//import * as yup from 'yup';
-//import axios from 'axios';
+import * as yup from 'yup';
+import axios from 'axios';
 
-function Form(props) {
+const formSchema = yup.object().shape({
+    name: yup
+        .string()
+        .min(3)
+        .required('Please enter your name'),
+    email: yup
+        .string()
+        .email()
+        .required('Please enter your email'),
+    type: yup
+        .string(),
+    startTime: yup
+        .string(),
+    duration: yup
+        .string(),
+    level: yup
+        .string(),
+    location: yup
+        .string(),
+    size: yup
+        .string(),
+    terms: yup
+        .boolean()
+        .oneOf([true], 'Please accept these terms'),
 
+})
 
-const onSubmit=(e)=>{
-e.preventDefault()
-alert('You signed up!')
-console.log("values", values)
-}
+export default function Form() {
 
-    const formValues = {
+    const [formState, setFormState] = useState({
         name: "",
         email: "",
         type: "",
         startTime: "",
         duration: "",
         level: "",
-        location:"",
-        // noRegAttend:"",
-        size:"",
+        location: "",
+        size: "",
+        terms:""
+    });
+
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        type: "",
+        startTime: "",
+        duration: "",
+        level: "",
+        location: "",
+        size: "",
+        terms:""
+    });
+
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            setButtonDisabled(!valid);
+        });
+
+    }, [formState]);
+
+    const validateChange = e => {
+        yup
+            .reach(formSchema, e.target.name)
+            .validate(e.target.value)
+            .then(valid => {
+                setErrors({
+                    ...errors,
+                    [e.target.name]:''
+                });
+
+            })
+            .catch(err => {
+                setErrors({
+                    ...errors,
+                    [e.target.name]: err.errors[0]
+                });
+            });
     }
-
-    const [values, setValues] = useState(formValues)
-
-    function onInputChange(event) {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value
-        })
-        //console.log("event target name", [event.target.name], event.target.value)
-
-    }
+    const formSubmit = e => {
+        e.preventDefault();
+        axios
+            .post("https://reqres.in/api/users", formState)
+            .then(res => {
+                setUsers(users.concat(res.data));
+                console.log("success", users);
+                
+                setFormState({
+                    name: "",
+                    email: "",
+                    type: "",
+                    startTime: "",
+                    duration: "",
+                    level: "",
+                    location: "",
+                    size: "",
+                    terms:"",
+                });
+            })
+            .catch(err => console.log(err.res));
+    };
+const onInputChange = e => {
+    e.persist();
+    const newFormData = {
+        ...formState,
+        [e.target.name]:
+        e.target.type === 'checkbox' ? e.target.checkbox :
+        e.target.value
+    };
+    validateChange(e);
+    setFormState(newFormData)
+};
     return (
-        <form>
+        <form onSubmit={formSubmit}>
             <h2>Anywhere Fitness</h2>
 
             <label>
                 Name:&nbsp;
                 <input
                     name='name'
-                    value={values.name}
+                    value={formState.name}
                     onChange={onInputChange}
                 />
+                {errors.name.length > 0 ? (<p className="error">{errors.name}</p>) : null}
             </label>
 
             <label>
                 Email:&nbsp;
                 <input
                     name='email'
-                    value={values.email}
+                    value={formState.email}
                     onChange={onInputChange}
                 />
+                {errors.email.length > 0 ? (<p className="error"> {errors.email}</p>) : null}
             </label>
 
             <label>
                 Type:&nbsp;
                 <select
                     name='type'
-                    value={values.type}
+                    value={formState.type}
                     onChange={onInputChange}
                 >
                     <option>Select a Workout Type</option>
@@ -76,13 +161,13 @@ console.log("values", values)
                 Start Time:&nbsp;
                 <select
                     name='startTime'
-                    value={values.startTime}
+                    value={formState.startTime}
                     onChange={onInputChange}
                 >
                     <option>Select a Time</option>
-                    <option value='Morning'>Morning</option>
-                    <option value='Afternoon'>Afternoon</option>
-                    <option value='Evening'>Evening</option>
+                    <option value='morning'>Morning</option>
+                    <option value='afternoon'>Afternoon</option>
+                    <option value='evening'>Evening</option>
                 </select>
             </label>
 
@@ -90,7 +175,7 @@ console.log("values", values)
                 Duration:&nbsp;
                 <select
                     name='duration'
-                    value={values.duration}
+                    value={formState.duration}
                     onChange={onInputChange}
                 >
                     <option>Select a Duration</option>
@@ -104,13 +189,13 @@ console.log("values", values)
                 Intensity Level:&nbsp;
                 <select
                     name='level'
-                    value={values.level}
+                    value={formState.level}
                     onChange={onInputChange}
                 >
                     <option>Select Intensity</option>
-                    <option value='Low'>Low</option>
-                    <option value='Moderate'>Moderate</option>
-                    <option value='Vigorous'>Vigorous</option>
+                    <option value='low'>Low</option>
+                    <option value='moderate'>Moderate</option>
+                    <option value='vigorous'>Vigorous</option>
                 </select>
             </label>
 
@@ -118,13 +203,13 @@ console.log("values", values)
                 Location:&nbsp;
                 <select
                     name='location'
-                    value={values.location}
+                    value={formState.location}
                     onChange={onInputChange}
                 >
                     <option>Select Location</option>
                     <option value='anderonsville'>Andersonville</option>
                     <option value='edgewater'>Edgewater</option>
-                    <option value='rogersPark'>Rogers Park</option>  
+                    <option value='rogersPark'>Rogers Park</option>
                     <option value='lakeview'>Lakeview</option>
                     <option value='lincolnPark'>Lincoln Park</option>
                     <option value='goldcoast'>Goldcoast</option>
@@ -135,19 +220,26 @@ console.log("values", values)
                 Class Size:&nbsp;
                 <select
                     name='size'
-                    value={values.size}
+                    value={formState.size}
                     onChange={onInputChange}
                 >
                     <option>Select Class Size</option>
                     <option value='small'>Small (1-4)</option>
                     <option value='medium'>Medium (5-15)</option>
-                    <option value='large'>Large (16+)</option>  
+                    <option value='large'>Large (16+)</option>
                 </select>
             </label>
-
-            <button className='submit' onClick={onSubmit}>Submit</button>
+            <label>
+                Terms of Service:&nbsp;
+                <input
+                type='checkbox'
+                name='terms'
+                checked={formState.terms}
+                onChange={onInputChange}/>
+            </label>
+            <pre>{JSON.stringify(users, null, 2)}</pre>
+            <button disabled={buttonDisabled}>Submit</button>
         </form>
     );
 }
 
-export default Form;

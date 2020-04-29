@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -24,8 +24,6 @@
   color: white;
 }
 
-
-
 .App-link {
   color: #61dafb;
 }
@@ -49,15 +47,21 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+
 
 }
 
 input {
-  width: 200px;
   margin: 5px;
   padding: 4px;
   border-radius: 5px;
+}
+
+select{
+  width: 200px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .field {
