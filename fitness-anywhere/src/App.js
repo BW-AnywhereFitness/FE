@@ -5,6 +5,7 @@ import Form from './Component/form'
 import { Searchbar } from './Component/Searchbar'
 import { Login } from './Component/login'
 import { MySchedule } from './Component/mySchedule'
+import { NewUser } from './Component/NewUser'
 
 function App()
 {
@@ -40,6 +41,9 @@ function App()
       </Route>
       <Route exact path='/myschedule'>
         <MySchedule />
+      </Route>
+      <Route exact path='/newuser'>
+        <NewUser />
       </Route>
     </div>
   );
