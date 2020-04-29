@@ -17,6 +17,7 @@ export const Login = () =>
       .then(res =>
       {
         console.log(res)
+        localStorage.setItem("token",res.data.token)
       })
   }
   const onChange = (e) =>

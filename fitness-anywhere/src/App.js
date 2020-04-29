@@ -7,6 +7,7 @@ import { Login } from './Component/login'
 import { MySchedule } from './Component/mySchedule'
 import { NewUser } from './Component/NewUser'
 import { InstructorLogin } from './Component/InstructorLogin';
+import { Classes } from './Component/Classes';
 
 function App()
 {
@@ -22,7 +23,10 @@ function App()
           Login
       </Link>
         <Link to="/signup">
-          Sign Up
+          Add Class
+      </Link>
+      <Link to="/classes">
+          Classes
       </Link>
         <Link to="/myschedule">
           My Schedule
@@ -42,6 +46,9 @@ function App()
       </Route>
       <Route exact path='/login'>
         <Login></Login>
+      </Route>
+      <Route exact path='/classes'>
+        <Classes></Classes>
       </Route>
       <Route exact path='/myschedule'>
         <MySchedule />
