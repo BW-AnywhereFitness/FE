@@ -19,10 +19,14 @@ export const Classes = () =>
       .catch("not getting properly")
     }, [])
     
-    const edit = (e) =>
+    const edit = (item) =>
     {
-      e.preventDefault()
-      console.log(e)
+      axiosWithAuth()
+        .put(`api/class/${item.id}`, item)
+        .then(res =>{
+          console.log(res)
+        })
+        .catch("")
     }
     const deleteMe = (item) =>
     {
@@ -50,7 +54,7 @@ export const Classes = () =>
         <div className="item">Attendees: {item.registered_attendees}</div>
         <div className="item">Max Size: {item.max_size}</div>
         <button onClick={()=>deleteMe(item)} > Delete</button>
-        <button onClick={edit} id={item.id}>Edit</button>
+        <button onClick={()=>edit(item)} >Edit</button>
       </div>
 
 ))}

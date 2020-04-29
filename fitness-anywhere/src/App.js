@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, NavLink } from 'react-router-dom'
+import { Route, Link, NavLink, browserRouter as Router, Switch } from 'react-router-dom'
 import Form from './Component/form'
 import { Searchbar } from './Component/Searchbar'
 import { Login } from './Component/login'
@@ -15,6 +15,7 @@ import { Instructors } from './Component/Instructors';
 function App()
 {
   return (
+
 
     <div className="App">
       <div className="bg"></div>
@@ -49,12 +50,16 @@ function App()
       </nav>
 
       <Searchbar></Searchbar>
+      <Switch>
 
+
+
+      </Switch>
       <Route exact path='/signup'>
         <Form></Form>
       </Route>
       <Route exact path='/login'>
-        <Login></Login>
+        <Login />
       </Route>
       <Route exact path='/classes'>
         <Classes></Classes>
