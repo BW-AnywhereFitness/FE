@@ -8,6 +8,9 @@ import { MySchedule } from './Component/mySchedule'
 import { NewUser } from './Component/NewUser'
 import { InstructorLogin } from './Component/InstructorLogin';
 import { Classes } from './Component/Classes';
+import { Clients } from './Component/Clients';
+import { Instructors } from './Component/Instructors';
+
 
 function App()
 {
@@ -37,6 +40,12 @@ function App()
       <Link to="/instructorlogin">
           Instructor Login
       </Link>
+      <Link to="/clients">
+          Clients
+      </Link>
+      <Link to="/instructors">
+          Instructors
+      </Link>
       </nav>
 
       <Searchbar></Searchbar>
@@ -58,6 +67,12 @@ function App()
       </Route>
       <Route exact path='/instructorlogin'>
         <InstructorLogin/>
+      </Route>
+      <Route exact path='/clients'>
+        <Clients/>
+      </Route>
+      <Route exact path='/instructors'>
+        <Instructors/>
       </Route>
     </div>
   );
