@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Route, Link, NavLink } from 'react-router-dom'
 
 
-export const Login = () =>
+export const InstructorLogin = () =>
 {
   const [creds, setCreds] = React.useState({ name: "", password: "" })
 
@@ -30,7 +30,7 @@ export const Login = () =>
         <br />
         <button onClick={handleClick}>Enter</button> 
         <br/>
-        <Link to="/newuser">New User? Register here</Link>
+        <Link to="/newuser">New Instructor? Register here</Link>
         <br />
         <Link to="/forgotpassword">Oops I forgot my password</Link>
 

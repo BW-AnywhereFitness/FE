@@ -6,6 +6,7 @@ import { Searchbar } from './Component/Searchbar'
 import { Login } from './Component/login'
 import { MySchedule } from './Component/mySchedule'
 import { NewUser } from './Component/NewUser'
+import { InstructorLogin } from './Component/InstructorLogin';
 
 function App()
 {
@@ -29,6 +30,9 @@ function App()
         <Link to="/clientschedule">
           Client Schedule
       </Link>
+      <Link to="/instructorlogin">
+          Instructor Login
+      </Link>
       </nav>
 
       <Searchbar></Searchbar>
@@ -44,6 +48,9 @@ function App()
       </Route>
       <Route exact path='/newuser'>
         <NewUser />
+      </Route>
+      <Route exact path='/instructorlogin'>
+        <InstructorLogin/>
       </Route>
     </div>
   );
