@@ -12,7 +12,7 @@ function App()
   return (
 
     <div className="App">
-      <div class="bg"></div>
+      <div className="bg"></div>
       <nav>
         <NavLink to="/">
           Home
