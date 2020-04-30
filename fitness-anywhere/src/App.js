@@ -26,6 +26,9 @@ function App()
         <Link to="/login">
           Login
       </Link>
+      <Link to="/instructorlogin">
+          Instructor Login
+      </Link>
         <Link to="/signup">
           Add Class
       </Link>
@@ -38,9 +41,7 @@ function App()
         <Link to="/clientschedule">
           Client Schedule
       </Link>
-      <Link to="/instructorlogin">
-          Instructor Login
-      </Link>
+
       <Link to="/clients">
           Clients
       </Link>
