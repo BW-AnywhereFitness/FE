@@ -22,7 +22,9 @@ const formSchema = yup.object().shape({
     max_size: yup
         .string(),
     id: yup
-        .number(),
+        .number()
+        .min(1)
+        .required("Please enter an id"),
     instructor_id: yup
     .number()
 })
@@ -31,8 +33,8 @@ const formSchema = yup.object().shape({
 function Form()
 {
     const initialFormValues = {
-        id: 0,
-        instructor_id: 0,
+        id: "",
+        instructor_id: "",
         name: "",
         type: "",
         start_time: "",
@@ -130,9 +132,11 @@ function Form()
                     value={values.id}
                     onChange={onInputChange}
                 />
+                {errors.id.length > 0 ? (<p className="error">{errors.id}</p>) : null}
+
             </label>
             <label>
-                Name:&nbsp;
+                Class Name:&nbsp;
                 <input
                     name='name'
                     value={values.name}
