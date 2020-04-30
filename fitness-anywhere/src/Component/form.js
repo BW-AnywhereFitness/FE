@@ -15,10 +15,10 @@ function Form() {
         type: "",
         start_time: "",
         duration: "",
-        intensity: "",
+        intensity: 0,
         location:"",
         register_attendees:"",
-        max_size:"",
+        max_size:0,
     }
 
     const [values, setValues] = useState(formValues)
@@ -95,7 +95,7 @@ const onSubmit = (e) =>{
             <label>
                 Start Time:&nbsp;
                 <select
-                    name='startTime'
+                    name='start_time'
                     value={values.start_time}
                     onChange={onInputChange}
                 >
@@ -123,14 +123,14 @@ const onSubmit = (e) =>{
             <label>
                 Intensity Level:&nbsp;
                 <select
-                    name='level'
+                    name='intensity'
                     value={values.intensity}
                     onChange={onInputChange}
                 >
                     <option>Select Intensity</option>
-                    <option value='Low'>Low</option>
-                    <option value='Moderate'>Moderate</option>
-                    <option value='Vigorous'>Vigorous</option>
+                    <option value={1}>Low</option>
+                    <option value={2}>Moderate</option>
+                    <option value='3'>Vigorous</option>
                 </select>
             </label>
 
@@ -154,14 +154,14 @@ const onSubmit = (e) =>{
             <label>
                 Class Size:&nbsp;
                 <select
-                    name='size'
-                    value={values.size}
+                    name='max_size'
+                    value={values.max_size}
                     onChange={onInputChange}
                 >
                     <option>Select Class Size</option>
-                    <option value='small'>Small (1-4)</option>
-                    <option value='medium'>Medium (5-15)</option>
-                    <option value='large'>Large (16+)</option>  
+                    <option value={4}>Small (1-4)</option>
+                    <option value={15}>Medium (5-15)</option>
+                    <option value={20}>Large (16+)</option>  
                 </select>
             </label>
 

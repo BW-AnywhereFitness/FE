@@ -39,3 +39,7 @@ code {
   text-align:center;
   display:grid;
 }
+
+li{
+  list-style-type:none
+}
