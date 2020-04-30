@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css'
+<<<<<<< HEAD
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
+//import * as yup from 'yup';
+//import axios from 'axios';
+
+function Form() {
+
+
+
+    const formValues = {
+        id:0,
+        instructor_id: 0,
+=======
 import * as yup from 'yup';
 import axios from 'axios';
 
@@ -33,16 +46,24 @@ const formSchema = yup.object().shape({
 export default function Form() {
 
     const [formState, setFormState] = useState({
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
         name: "",
-        email: "",
         type: "",
-        startTime: "",
+        start_time: "",
         duration: "",
+<<<<<<< HEAD
+        intensity: 0,
+        location:"",
+        register_attendees:"",
+        max_size:0,
+    }
+=======
         level: "",
         location: "",
         size: "",
         terms:""
     });
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
 
     const [errors, setErrors] = useState({
         name: "",
@@ -56,6 +77,31 @@ export default function Form() {
         terms:""
     });
 
+<<<<<<< HEAD
+    function onInputChange(event) {
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value
+        })
+        //console.log("event target name", [event.target.name], event.target.value)
+        // console.log("values", values)
+    }
+
+const onSubmit = (e) =>{
+    e.preventDefault()
+    console.log(values)
+    axiosWithAuth()
+    .post(`/api/class/${values.id}/`, values)
+    .then(res=>{
+        console.log("response from add", res)
+    })
+    .catch("You caught me")
+
+
+}
+
+
+=======
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const [users, setUsers] = useState([]);
 
@@ -117,10 +163,19 @@ const onInputChange = e => {
     validateChange(e);
     setFormState(newFormData)
 };
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
     return (
         <form onSubmit={formSubmit}>
             <h2>Anywhere Fitness</h2>
 
+            <label>
+                Class Id:&nbsp;
+                <input
+                    name='id'
+                    value={values.id}
+                    onChange={onInputChange}
+                />
+            </label>
             <label>
                 Name:&nbsp;
                 <input
@@ -132,10 +187,15 @@ const onInputChange = e => {
             </label>
 
             <label>
-                Email:&nbsp;
+                Instructor ID:&nbsp;
                 <input
+<<<<<<< HEAD
+                    name='instructor_id'
+                    value={values.instructor_id}
+=======
                     name='email'
                     value={formState.email}
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
                     onChange={onInputChange}
                 />
                 {errors.email.length > 0 ? (<p className="error"> {errors.email}</p>) : null}
@@ -160,8 +220,13 @@ const onInputChange = e => {
             <label>
                 Start Time:&nbsp;
                 <select
+<<<<<<< HEAD
+                    name='start_time'
+                    value={values.start_time}
+=======
                     name='startTime'
                     value={formState.startTime}
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
                     onChange={onInputChange}
                 >
                     <option>Select a Time</option>
@@ -188,6 +253,16 @@ const onInputChange = e => {
             <label>
                 Intensity Level:&nbsp;
                 <select
+<<<<<<< HEAD
+                    name='intensity'
+                    value={values.intensity}
+                    onChange={onInputChange}
+                >
+                    <option>Select Intensity</option>
+                    <option value={1}>Low</option>
+                    <option value={2}>Moderate</option>
+                    <option value='3'>Vigorous</option>
+=======
                     name='level'
                     value={formState.level}
                     onChange={onInputChange}
@@ -196,6 +271,7 @@ const onInputChange = e => {
                     <option value='low'>Low</option>
                     <option value='moderate'>Moderate</option>
                     <option value='vigorous'>Vigorous</option>
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
                 </select>
             </label>
 
@@ -219,6 +295,16 @@ const onInputChange = e => {
             <label>
                 Class Size:&nbsp;
                 <select
+<<<<<<< HEAD
+                    name='max_size'
+                    value={values.max_size}
+                    onChange={onInputChange}
+                >
+                    <option>Select Class Size</option>
+                    <option value={4}>Small (1-4)</option>
+                    <option value={15}>Medium (5-15)</option>
+                    <option value={20}>Large (16+)</option>  
+=======
                     name='size'
                     value={formState.size}
                     onChange={onInputChange}
@@ -227,6 +313,7 @@ const onInputChange = e => {
                     <option value='small'>Small (1-4)</option>
                     <option value='medium'>Medium (5-15)</option>
                     <option value='large'>Large (16+)</option>
+>>>>>>> e15d10ac0fdc56594b4589f509e8b76f36c39b32
                 </select>
             </label>
             <label>
