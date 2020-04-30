@@ -45,8 +45,11 @@ export const Searchbar = (props) =>
       </form>
       <ul>
       {searchResults.map(item=>(
-        <li>{item.name}</li>
-      ))}
+        <>
+        <li>Class Name: {item.name}</li>
+        <li>Start Time: {item.start_time}</li>
+        </>
+      ))} 
       </ul>
     </div>)
 }
