@@ -68,10 +68,8 @@ function Form()
             ...values,
             [e.target.name]: e.target.value
         })
-        console.log("Event from onChange", e)
         validateChange(e)
-        //console.log("event target name", [event.target.name], event.target.value)
-        // console.log("values", values)
+
     }
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -86,7 +84,6 @@ function Form()
 
     const validateChange = e =>
     {
-        console.log("E from validate", [e.target.name])
         yup
             .reach(formSchema, e.target.name)
             .validate(e.target.value)
@@ -116,7 +113,7 @@ function Form()
             .then(res =>
             {
                 console.log("response from add", res)
-                setValues(initialFormValues)
+                setValues({...values, id:values.id++})
             })
             .catch("You caught me")
     }

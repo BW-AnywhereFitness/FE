@@ -8,12 +8,13 @@ export const Classes = () =>
 
   const [searchTerm, setSearchTerm] = React.useState("")
   const [searchResults, setSearchResults] = React.useState([]) //want to instantiate with props.classes
+  const [classes, setClasses] = React.useState([])
   React.useEffect(() =>
   {
     // console.log(classes)
     const results = classes.filter((item) =>
 
-      item.name.toLowerCase().includes(searchTerm)  // this is magic of search
+      (item.name.toLowerCase().includes(searchTerm) || item.start_time.toLowerCase().includes(searchTerm) || item.type.toLowerCase().includes(searchTerm) || item.duration.toLowerCase().includes(searchTerm) || item.intensity === searchTerm ||item.location.toLowerCase().includes(searchTerm) || item.id === searchTerm)  // this is magic of search
       // item.duration.toLowerCase().includes(searchTerm)
 
     )
@@ -31,13 +32,26 @@ export const Classes = () =>
   const handleChange = (e) =>
   {
     setSearchTerm(e.target.value)
-    console.log("SearchTerm", searchTerm)
+    // console.log("lower case etarget",e.target.value.toLowerCase())
+
   }
 
+/////
 
+
+const findSearchObject = function (array, searchTerm2){
+  const objReturned = array.find(function(item, index){
+    return (item.name === searchTerm2 )
+  })
+  return objReturned   // holy crap it worked.
+}
+
+const searchResults2= findSearchObject(classes, searchTerm)
+console.log("SearchResults2", searchResults2)
+
+////
 
   let incrementer = 1
-  const [classes, setClasses] = React.useState([])
   useEffect(() =>
   {
     axiosWithAuth()
