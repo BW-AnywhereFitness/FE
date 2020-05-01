@@ -14,6 +14,13 @@ import { Instructors } from './Component/Instructors';
 
 function App()
 {
+
+const logOff = () =>{
+  const token = localStorage.removeItem("token")
+  alert("You are logged out")
+}
+
+
   return (
 
 
@@ -24,7 +31,7 @@ function App()
           Home
       </NavLink>
         <Link to="/login">
-          Login
+          Client Login
       </Link>
       <Link to="/instructorlogin">
           Instructor Login
@@ -48,6 +55,7 @@ function App()
       <Link to="/instructors">
           Instructors
       </Link>
+      <button onClick={logOff}>Log Out</button>
       </nav>
 
       {/* <Searchbar></Searchbar> */}
@@ -80,6 +88,7 @@ function App()
       <Route exact path='/instructors'>
         <Instructors/>
       </Route>
+
     </div>
   );
 }

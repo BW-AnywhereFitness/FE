@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../Utils/axiosWithAuth';
-import { Searchbar } from '../Component/Searchbar'
+// import { EditBox } from '../Component/EditBox'  // wanted a pop up edit box upon clicking edit for the individual class. failed. 
+import  FormGeneric  from '../Component/FormGeneric'
 
 export const Classes = () =>
 {
@@ -9,6 +10,20 @@ export const Classes = () =>
   const [searchTerm, setSearchTerm] = React.useState("")
   const [searchResults, setSearchResults] = React.useState([]) //want to instantiate with props.classes
   const [classes, setClasses] = React.useState([])
+  const [values, setValues] = useState({
+    id: "",
+    instructor_id: "",
+    name: "",
+    type: "",
+    start_time: "",
+    duration: "",
+    intensity: 0,
+    location: "",
+    register_attendees: "",
+    max_size: 0,
+  }
+)
+
   React.useEffect(() =>
   {
     // console.log(classes)
@@ -36,9 +51,7 @@ export const Classes = () =>
 
   }
 
-/////
-
-
+/////  NOT A USED FUNCTION BUT WOULD BE GOOD FOR FINDING
 const findSearchObject = function (array, searchTerm2){
   const objReturned = array.find(function(item, index){
     return (item.name === searchTerm2 )
@@ -48,8 +61,7 @@ const findSearchObject = function (array, searchTerm2){
 
 const searchResults2= findSearchObject(classes, searchTerm)
 console.log("SearchResults2", searchResults2)
-
-////
+////// End of not used 
 
   let incrementer = 1
   useEffect(() =>
@@ -66,13 +78,25 @@ console.log("SearchResults2", searchResults2)
 
   const edit = (item) =>
   {
+
     axiosWithAuth()
-      .put(`api/class/${item.id}`, item)
+      .put(`api/class/${item.id}`, values)
       .then(res =>
       {
         console.log(res)
       })
       .catch("")
+      setTimeout(()=>{
+
+        axiosWithAuth()
+        .get("/api/class")
+        .then(res =>
+        {
+          setClasses(res.data)
+          console.log("classes", res.data)
+        })
+        .catch("not getting properly")
+      },1500)
   }
   const deleteMe = (item) =>
   {
@@ -139,8 +163,9 @@ console.log("SearchResults2", searchResults2)
       </div>
 
     ))}
-        Loading
-
+    <hr/>
+    <h1>Complete form and click edit to change any given class. </h1>
+    <FormGeneric values={values} setValues={setValues}></FormGeneric>
   </div>
   )
 }

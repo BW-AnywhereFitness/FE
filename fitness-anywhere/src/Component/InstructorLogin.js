@@ -18,6 +18,7 @@ export const InstructorLogin = () =>
       {
         console.log(res)
         localStorage.setItem("token",res.data.token)
+        alert("you're logged in")
 
       })
   }
