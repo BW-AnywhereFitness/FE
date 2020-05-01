@@ -4,7 +4,7 @@ import { axiosWithAuth } from '../Utils/axiosWithAuth';
 import { Route, Link, NavLink } from 'react-router-dom'
 
 
-export const Login = () =>
+export const Login = (props) =>
 {
   const [creds, setCreds] = React.useState({ name: "", password: "" })
 
@@ -18,6 +18,7 @@ export const Login = () =>
       {
         console.log(res)
         localStorage.setItem("token",res.data.token)
+        // props.history.push('/classes')
       })
   }
   const onChange = (e) =>
