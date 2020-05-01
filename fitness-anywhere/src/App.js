@@ -31,7 +31,7 @@ const logOff = () =>{
           Home
       </NavLink>
         <Link to="/login">
-          Login
+          Client Login
       </Link>
       <Link to="/instructorlogin">
           Instructor Login
