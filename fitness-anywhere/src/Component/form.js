@@ -113,7 +113,7 @@ function Form()
             .then(res =>
             {
                 console.log("response from add", res)
-                setValues({...values, id:values.id++})
+                setValues({...values, id:values.id++}) // didnt' work as expected. want to add new classes quick w/ min retyping for debug. 
             })
             .catch("You caught me")
     }
