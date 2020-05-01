@@ -18,7 +18,7 @@ export const Login = (props) =>
       {
         console.log(res)
         localStorage.setItem("token",res.data.token)
-        // props.history.push('/classes')
+        props.history.push('/classes')
       })
   }
   const onChange = (e) =>
