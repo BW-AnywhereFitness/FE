@@ -70,6 +70,18 @@ export const Classes = () =>
         console.log(res)
       })
       .catch("")
+
+      setTimeout(()=>{
+
+        axiosWithAuth()
+        .get("/api/class")
+        .then(res =>
+        {
+          setClasses(res.data)
+          console.log("classes", res.data)
+        })
+        .catch("not getting properly")
+      },1500)
     incrementer++  // this did not work as expected
   }
 
