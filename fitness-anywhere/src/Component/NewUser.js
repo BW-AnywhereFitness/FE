@@ -19,6 +19,7 @@ export const NewUser = () =>
         .post('/api/auth/client_register', credObj)
         .then(res=>{
           console.log(res)
+          alert("You're now registered")
 
         })
         .catch("Error")
@@ -29,6 +30,8 @@ export const NewUser = () =>
       .post('/api/auth/instructor_register', credObj)
       .then(res=>{
         console.log(res)
+        alert("You're now registered")
+
       })
     }
   }
